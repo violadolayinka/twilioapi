@@ -28,9 +28,10 @@ def hello_monkey():
     # Say a command, and listen for the caller to press a key. When they press
     # a key, redirect them to /handle-key.
     with resp.gather(numDigits=1, action="/handle-key", method="POST") as g:
-        g.say("To speak to a real monkey, press 1. Press any other key to start over."
+        g.say("To speak to a real monkey, press 1. Press any other key to start over.")
 
     return str(resp)
+
 
 @app.route("/handle-key", methods=['GET', 'POST'])
 def handle_key():
@@ -41,7 +42,7 @@ def handle_key():
     if digit_pressed == "1":
         resp = twilio.twiml.Response()
         # Dial (310) 555-1212 - connect that number to the incoming caller.
-        resp.dial("+13105551212")
+        resp.dial("+12672502802")
         # If the dial fails:
         resp.say("The call failed, or the remote party hung up. Goodbye.")
 
