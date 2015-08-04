@@ -17,7 +17,7 @@ def hello_monkey():
     if from_number in callers:
         caller = callers[from_number]
     else:
-        caller = "Monkey"
+        caller = "Friend"
 
     resp = twilio.twiml.Response()
     # Greet the caller by name
@@ -26,7 +26,7 @@ def hello_monkey():
     resp.play("http://demo.twilio.com/hellomonkey/monkey.mp3")
 
     with resp.gather(numDigits=1, action="/handle-key", method="POST") as g:
-        g.say("""To speak to a real monkey, press 1.
+        g.say("""To speak to the creator of this app, press 1.
                  Press 2 to record your own monkey howl.
                  Press any other key to start over.""")
 
@@ -55,7 +55,7 @@ def handle_key():
 
     elif digit_pressed == "2":
         resp = twilio.twiml.Response()
-        resp.say("Record your monkey howl after the tone.")
+        resp.say("Record your happy howl after the tone.")
         resp.record(maxLength="30", action="/handle-recording")
         return str(resp)
 
